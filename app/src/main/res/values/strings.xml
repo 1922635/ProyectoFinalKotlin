@@ -1,5 +1,21 @@
 <resources>
-    <string name="app_name">ProyectoFinal</string>
+    <string name="app_name">Login1</string>
+    <string name="title">Login</string>
+    <string name="button1">Iniciar sesión</string>
+    <string name="email">Dirección email</string>
+    <string name="password">Contraseña</string>
+    <string name="AltLogo">Sherlock logo</string>
+    <string name="googleIcon">Google icon</string>
+    <string name="facebookIcon">Facebook icon</string>
+    <string name="forgotPassword">¿Has olvidado tu
+        <a href="https://www.google.com/?hl=es">contraseña?</a>
+    </string>
+    <string name="notAccount">¿No tienes una cuenta?</string>
+    <string name="Register">Regístrate</string>
+    <string name="contacto">Arsene Lupin</string>
+    <string name="nickname">Nickname</string>
+    <string name="resgister2">Resgistrarse</string>
+    <string name="vacio" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
