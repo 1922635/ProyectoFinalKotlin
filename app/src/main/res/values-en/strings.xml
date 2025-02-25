@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProyect</string>
+    <string name="title">Login</string>
+    <string name="button1">Log in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="AltLogo">Sherlock logo</string>
+    <string name="googleIcon">Google icon</string>
+    <string name="facebookIcon">Facebook icon</string>
+    <string name="forgotPassword">Forgot your
+        <a href="https://www.google.com/?hl=es">password?</a>
+    </string>
+    <string name="notAccount">Don\'t have an account?</string>
+    <string name="Register">Sign up</string>
+    <string name="contacto">Arsene Lupin</string>
+    <string name="nickname">Nickname</string>
+    <string name="resgister2">Sign up</string>
+    <string name="vacio" />
+    <string name="user_image">User</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="cerrar_sesion">Log Out</string>
+    <string name="opciones">Options</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="notifications">Notifications</string>
+    <string name="search">Search</string>
+    <string name="sort">Sort</string>
+    <string name="settings">Settings</string>
+</resources>

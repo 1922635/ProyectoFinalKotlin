@@ -28,6 +28,11 @@ import com.google.android.material.snackbar.Snackbar
                 .navigate(R.id.action_firstFragment_to_secondFragment)
         }
 
+        binding.button.setOnClickListener {
+            findNavController()
+                .navigate(R.id.action_firstFragment_to_scaffold)
+        }
+
     }
 
     companion object {

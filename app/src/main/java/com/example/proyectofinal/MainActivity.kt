@@ -2,12 +2,14 @@ package com.example.proyectofinal
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
@@ -47,4 +49,8 @@ class MainActivity : AppCompatActivity()
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
         fragmentTransaction.commit()
     }
+
+    //SearchView
+    private lateinit var searchView: SearchView
+    private lateinit var recyclerView: RecyclerView
 }

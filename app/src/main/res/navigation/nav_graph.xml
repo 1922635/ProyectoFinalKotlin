@@ -25,6 +25,11 @@
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/FragmentRegister"/>
 
+        <action
+
+            android:id="@+id/action_firstFragment_to_scaffold"
+            app:destination="@id/FragmentScaffold"/>
+
 
     </fragment>
 
@@ -38,6 +43,20 @@
 
             android:id="@+id/action_secondFragment_to_firstFragment"
             app:destination="@id/FragmentLogin" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentScaffold"
+        android:name="com.example.proyectofinal.ScaffoldFragment"
+        android:label="Scaffold Fragment"
+        tools:layout="@layout/fragment_scaffold" >
+
+        <action
+
+            android:id="@+id/action_scaffold_to_firstFragment"
+            app:destination="@id/FragmentLogin"/>
 
 
     </fragment>
