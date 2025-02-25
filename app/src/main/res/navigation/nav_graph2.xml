@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/FragmentScaffold">
+
+
+    <activity
+        android:id="@+id/MainActivity"
+        android:name="com.example.proyectofinal.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+
+
+    <fragment
+        android:id="@+id/FragmentScaffold"
+        android:name="com.example.proyectofinal.ScaffoldFragment"
+        android:label="Scaffold Fragment"
+        tools:layout="@layout/fragment_scaffold" >
+
+
+        <action
+
+            android:id="@+id/fragment_scaffold_contacto"
+            app:destination="@id/FragmentContacto"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentContacto"
+        android:name="com.example.proyectofinal.ContactoFragment"
+        android:label="Contacto Fragment"
+        tools:layout="@layout/fragment_contacto" >
+
+
+    </fragment>
+
+
+</navigation>

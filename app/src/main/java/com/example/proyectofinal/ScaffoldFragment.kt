@@ -13,6 +13,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.proyectofinal.databinding.FragmentScaffoldBinding
 
 class ScaffoldFragment : Fragment()
@@ -48,6 +49,8 @@ class ScaffoldFragment : Fragment()
                 }
 
                 R.id.nav_dashboard -> {
+                    findNavController()
+                        .navigate(R.id.fragment_scaffold_contacto)
                     true
                 }
 
