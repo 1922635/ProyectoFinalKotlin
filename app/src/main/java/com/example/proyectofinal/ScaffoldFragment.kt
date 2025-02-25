@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.proyectofinal.databinding.FragmentScaffoldBinding
 
@@ -32,6 +34,11 @@ class ScaffoldFragment : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
+
+        val navHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
+
+
         /* DRAWER LAYOUT */
         val toggle = ActionBarDrawerToggle(
             requireActivity(), binding.drawerLayout, binding.toolbar,
@@ -45,12 +52,12 @@ class ScaffoldFragment : Fragment()
             item -> when(item.itemId)
             {
                 R.id.nav_home -> {
+                    navController.navigate(R.id.FragmentContacto)
                     true
                 }
 
                 R.id.nav_dashboard -> {
-                    findNavController()
-                        .navigate(R.id.fragment_scaffold_contacto)
+                    navController.navigate(R.id.bnm_dashboard)
                     true
                 }
 
@@ -95,11 +102,11 @@ class ScaffoldFragment : Fragment()
                 item ->
             when (item.itemId) {
                 R.id.bnm_home -> {
-                    // Handle Home navigation
+                    navController.navigate(R.id.FragmentContacto)
                     true
                 }
                 R.id.bnm_dashboard -> {
-                    // Handle Dashboard navigation
+                    navController.navigate(R.id.FragmentLista)
                     true
                 }
                 R.id.bnm_notifications -> {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="330dp"
+    android:layout_margin="20dp" android:background="@color/itemBg">
+
+    <ImageView
+        android:layout_width="147dp"
+        android:layout_height="209dp" app:srcCompat="@drawable/sherlockicon" android:id="@+id/iv"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071" app:layout_constraintVertical_bias="0.132"/>
+    <TextView
+        android:text="TextView"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.7" app:layout_constraintVertical_bias="0.302"
+        android:textColor="#000000" app:layout_constraintStart_toEndOf="@+id/iv"/>
+    <TextView
+        android:text="TextView"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/valor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.714" app:layout_constraintVertical_bias="0.565"
+        android:textColor="#000000" app:layout_constraintStart_toEndOf="@+id/iv"/>
+    <TextView
+        android:text="TextView"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/fortaleza"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771"
+        android:textColor="#000000"/>
+    <TextView
+        android:text="TextView"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/debilidad"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.909"
+        android:textColor="#000000"/>
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_margin="5dp"
+        android:layout_height="34dp" app:srcCompat="@drawable/fav_unselected" android:id="@+id/fabFav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintVertical_bias="0.054"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
