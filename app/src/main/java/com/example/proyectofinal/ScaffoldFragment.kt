@@ -57,11 +57,18 @@ class ScaffoldFragment : Fragment()
                 }
 
                 R.id.nav_dashboard -> {
-                    navController.navigate(R.id.bnm_dashboard)
+                    navController.navigate(R.id.FragmentLista)
                     true
                 }
 
                 R.id.nav_notifications -> {
+                    navController.navigate(R.id.FragmentTabs)
+                    true
+                }
+
+                R.id.nav_logOut -> {
+                    findNavController()
+                        .navigate(R.id.action_scaffold_to_firstFragment)
                     true
                 }
                 else -> false
@@ -88,8 +95,17 @@ class ScaffoldFragment : Fragment()
                         // Manejar la selección del item1
                         true
                     }
-                    R.id.action_settings -> {
+                    R.id.action_sort -> {
                         // Manejar la selección del item2
+                        true
+                    }
+                    R.id.action_settings -> {
+                        // Manejar la selección del item3
+                        true
+                    }
+                    R.id.logOut -> {
+                        findNavController()
+                            .navigate(R.id.action_scaffold_to_firstFragment)
                         true
                     }
                     else -> false
@@ -110,7 +126,7 @@ class ScaffoldFragment : Fragment()
                     true
                 }
                 R.id.bnm_notifications -> {
-                    // Handle Notifications navigation
+                    navController.navigate(R.id.FragmentTabs)
                     true
                 }
                 else -> false

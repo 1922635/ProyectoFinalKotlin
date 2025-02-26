@@ -20,4 +20,11 @@
         tools:layout="@layout/fragment_lista">
     </fragment>
 
+    <fragment
+        android:id="@+id/FragmentTabs"
+        android:name="com.example.proyectofinal.TabsFragment"
+        android:label="Lista Fragment"
+        tools:layout="@layout/fragment_tabs">
+    </fragment>
+
 </navigation>

@@ -28,4 +28,6 @@
     <string name="search">Buscar</string>
     <string name="sort">Ordenar</string>
     <string name="settings">Opciones</string>
+    <string name="lista">Lista</string>
+    <string name="favoritos">Favoritos</string>
 </resources>
