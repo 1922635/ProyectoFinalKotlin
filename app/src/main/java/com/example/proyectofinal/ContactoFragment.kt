@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -32,17 +34,13 @@ class ContactoFragment: Fragment() {
 
         binding.button5.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    Activity(),
+                    requireContext(),
                     android.Manifest.permission.CALL_PHONE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
                 hacerLlamada()
             } else {
-                ActivityCompat.requestPermissions(
-                    Activity(),
-                    arrayOf(android.Manifest.permission.CALL_PHONE),
-                    CALL_PHONE_PERMISSION_REQUEST
-                )
+                requestPermissionLauncher.launch(android.Manifest.permission.CALL_PHONE)
             }
         }
 
@@ -56,45 +54,29 @@ class ContactoFragment: Fragment() {
 
         binding.button8.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    Activity(),
+                    requireContext(),
                     android.Manifest.permission.ACCESS_FINE_LOCATION
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
                 abrirMapa()
             } else {
-                ActivityCompat.requestPermissions(
-                    Activity(),
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    CALL_PHONE_PERMISSION_REQUEST
-                )
-            }
-
-
-            abrirMapa()
-
-        }
-
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode == CALL_PHONE_PERMISSION_REQUEST) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                hacerLlamada()
+                requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
             }
         }
+
     }
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun hacerLlamada() {
-        /*val phoneNumber = "1234567890"
+        val phoneNumber = "1234567890"
 
-        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
+        val intent = Intent(Intent.ACTION_CALL).apply {  data = Uri.parse("tel:$phoneNumber") }
 
-        if (intent.resolveActivity(packageManager) != null) {
+        try {
             startActivity(intent)
-        }*/
+        } catch (e: SecurityException) {
+            Toast.makeText(requireContext(), "No se puede hacer la llamada", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun mandarEmail() {
@@ -127,6 +109,14 @@ class ContactoFragment: Fragment() {
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:$latitude,$longitude?z=$zoom"))
         startActivity(intent)
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            Toast.makeText(requireContext(), "Permiso concedido", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Permiso denegado", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

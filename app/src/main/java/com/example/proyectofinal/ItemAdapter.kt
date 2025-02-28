@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.databinding.ItemLayoutBinding
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class ItemAdapter(private val context: Context, private val items: List<Item> ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>()
 {
@@ -33,9 +35,34 @@ class ItemAdapter(private val context: Context, private val items: List<Item> ) 
             binding.valor.text = data.valor
             binding.debilidad.text = data.debilidad
             binding.fortaleza.text = data.fortaleza
-            binding.iv.setImageResource(data.img)
 
-            if (data.fav)
+            //Aquí pongo las imagenes manualmente en función del id de la pieza
+            if (data.id == 1)
+            {
+                binding.iv.setImageResource(R.drawable.dama)
+            }else if (data.id == 2)
+            {
+                binding.iv.setImageResource(R.drawable.peon)
+            } else if (data.id == 3)
+            {
+                binding.iv.setImageResource(R.drawable.caballo)
+            } else if (data.id == 4)
+            {
+                binding.iv.setImageResource(R.drawable.alfil)
+            } else if (data.id == 5)
+            {
+                binding.iv.setImageResource(R.drawable.torre)
+            } else if (data.id == 6)
+            {
+                binding.iv.setImageResource(R.drawable.rey)
+            }else
+            {
+                binding.iv.setImageResource(R.drawable.peon)
+            }
+
+
+
+            if (data.favorito)
             {
                 binding.fabFav.setImageResource (R.drawable.fav_selected)
             }else
@@ -43,16 +70,21 @@ class ItemAdapter(private val context: Context, private val items: List<Item> ) 
                 binding.fabFav.setImageResource(R.drawable.fav_unselected)
             }
 
+            val db = Firebase.firestore
+
             binding.fabFav.setOnClickListener{
-                if (data.fav)
+                if (data.favorito)
                 {
                     binding.fabFav.setImageResource (R.drawable.fav_unselected)
+                    db.collection("items").document(data.id.toString()).update("fav", false)
                 }else
                 {
                     binding.fabFav.setImageResource(R.drawable.fav_selected)
+                    db.collection("items").document(data.id.toString()).update("fav", true)
                 }
-                data.fav = !data.fav
+                data.favorito = !data.favorito
             }
+
         }
     }
 }

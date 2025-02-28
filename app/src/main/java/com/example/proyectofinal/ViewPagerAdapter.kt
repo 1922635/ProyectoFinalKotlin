@@ -13,9 +13,9 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
     {
         return when (position)
         {
-            0 -> ContactoFragment()
-            1 -> ListaFragment()
-            else -> ContactoFragment()
+            0 -> ListaFragment()
+            1 -> FavoritosFragment()
+            else -> ListaFragment()
         }
     }
 }

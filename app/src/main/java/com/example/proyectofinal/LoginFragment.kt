@@ -29,9 +29,23 @@ import com.google.android.material.snackbar.Snackbar
         }
 
         binding.button.setOnClickListener {
-            findNavController()
-                .navigate(R.id.action_firstFragment_to_scaffold)
+
+            val user = binding.inputEmail.text.toString()
+            val password = binding.inputPassword.text.toString()
+
+            if (user.isEmpty())
+            {
+                binding.textInputLayout4.error = getString(R.string.errorEmail)
+            }else if (password.isEmpty())
+            {
+                binding.textInputLayout.error = getString(R.string.errorPassword)
+            }else
+            {
+                findNavController()
+                    .navigate(R.id.action_firstFragment_to_scaffold)
+            }
         }
+
 
     }
 

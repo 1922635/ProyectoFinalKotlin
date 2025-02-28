@@ -57,12 +57,12 @@ class ScaffoldFragment : Fragment()
                 }
 
                 R.id.nav_dashboard -> {
-                    navController.navigate(R.id.FragmentLista)
+                    navController.navigate(R.id.FragmentTabs)
                     true
                 }
 
                 R.id.nav_notifications -> {
-                    navController.navigate(R.id.FragmentTabs)
+                    navController.navigate(R.id.FragmentContacto)
                     true
                 }
 
@@ -122,11 +122,11 @@ class ScaffoldFragment : Fragment()
                     true
                 }
                 R.id.bnm_dashboard -> {
-                    navController.navigate(R.id.FragmentLista)
+                    navController.navigate(R.id.FragmentTabs)
                     true
                 }
                 R.id.bnm_notifications -> {
-                    navController.navigate(R.id.FragmentTabs)
+                    navController.navigate(R.id.FragmentContacto)
                     true
                 }
                 else -> false

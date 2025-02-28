@@ -1,6 +1,5 @@
 package com.example.proyectofinal
 
-import android.app.Activity
 import android.net.http.HttpException
 import android.os.Build
 import android.os.Bundle
@@ -11,19 +10,17 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresExtension
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.databinding.FragmentListaBinding
-import com.example.proyectofinal.databinding.FragmentLoginBinding
-import com.google.api.Distribution
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.ktx.firestore
-import kotlinx.coroutines.*
-import com.example.proyectofinal.Item
-import com.example.proyectofinal.ItemAdapter
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ListaFragment: Fragment()
+class FavoritosFragment: Fragment()
 {
     private lateinit var binding: FragmentListaBinding
     private var piezas: MutableList<Item> = mutableListOf()
@@ -40,20 +37,19 @@ class ListaFragment: Fragment()
 
         binding.swipeRefresh.setOnRefreshListener {
             CoroutineScope(Dispatchers.IO).launch {
-                try
-                {
+                try {
                     async { cargarPiezas() }.await()
-                }catch (e: HttpException)
-                {
+                } catch (e: HttpException) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT)
+                            .show()
                     }
-                }catch (e: Exception)
-                {
+                } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT)
+                            .show()
                     }
-                }finally {
+                } finally {
                     withContext(Dispatchers.Main)
                     {
                         adapter = ItemAdapter(requireActivity(), piezas)
@@ -63,24 +59,6 @@ class ListaFragment: Fragment()
                 }
             }
         }
-
-
-
-        /*val piezas = listOf(
-            Item(R.drawable.dama, "Dama", "Valor: 9", "Fortaleza: Versatilidad", "Debilidad: Sobrecarga", false),
-            Item(R.drawable.peon, "Peón", "Valor: 1", "Fortaleza: Consistencia", "Debilidad: Monotonía", false),
-            Item(R.drawable.caballo, "Caballo", "Valor: 3", "Fortaleza: Alcance", "Debilidad: Maniobrabilidad", false),
-            Item(R.drawable.alfil, "Alfil", "Valor: 3", "Fortaleza: Precisión", "Debilidad: Defensa", false),
-            Item(R.drawable.torre, "Torre", "Valor: 5", "Fortaleza: Presión", "Debilidad: Velocidad", false),
-            Item(R.drawable.rey, "Rey", "Valor: Indefinido", "Fortaleza: Maniobrabilidad", "Debilidad: Vulnerabilidad", false)
-        )
-
-        val adapter = ItemAdapter(Activity(), piezas)
-
-        val recyclerView: RecyclerView = binding.rv
-
-        recyclerView.layoutManager = LinearLayoutManager(Activity())
-        recyclerView.adapter = ItemAdapter(Activity(), piezas)*/
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -126,16 +104,21 @@ class ListaFragment: Fragment()
         }
 
         db.collection("items").get().addOnSuccessListener { result ->
-            for (document in result) {
-                val pieza = Item(
-                    document.id.toInt(),
-                    document.get("nombre") as String,
-                    document.get("valor") as String,
-                    document.get("fortaleza") as String,
-                    document.get("debilidad") as String,
-                    document.get("fav") as Boolean
-                )
-                piezas.add(pieza)
+            for (document in result)
+            {
+                val fav = document.get("fav") as Boolean
+                if (fav)
+                {
+                    val pieza = Item(document.id.toInt(),
+                        document.get("nombre") as String,
+                        document.get("valor") as String,
+                        document.get("fortaleza") as String,
+                        document.get("debilidad") as String,
+                        fav
+                    )
+                    piezas.add(pieza)
+                }
+
             }
         }
             .addOnFailureListener {

@@ -30,4 +30,6 @@
     <string name="settings">Settings</string>
     <string name="lista">List</string>
     <string name="favoritos">Favourites</string>
+    <string name="errorEmail">Introduce a valid email</string>
+    <string name="errorPassword">Introduce a valid password</string>
 </resources>

@@ -12,14 +12,6 @@
         android:label="Contacto Fragment"
         tools:layout="@layout/fragment_contacto">
     </fragment>
-
-    <fragment
-        android:id="@+id/FragmentLista"
-        android:name="com.example.proyectofinal.ListaFragment"
-        android:label="Lista Fragment"
-        tools:layout="@layout/fragment_lista">
-    </fragment>
-
     <fragment
         android:id="@+id/FragmentTabs"
         android:name="com.example.proyectofinal.TabsFragment"

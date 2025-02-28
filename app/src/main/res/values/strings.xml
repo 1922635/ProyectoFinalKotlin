@@ -30,4 +30,6 @@
     <string name="settings">Opciones</string>
     <string name="lista">Lista</string>
     <string name="favoritos">Favoritos</string>
+    <string name="errorEmail">Introduzca un email válido</string>
+    <string name="errorPassword">Introduzca una contraseña válido</string>
 </resources>
