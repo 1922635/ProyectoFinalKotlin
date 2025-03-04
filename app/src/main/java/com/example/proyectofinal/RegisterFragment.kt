@@ -40,14 +40,15 @@ class RegisterFragment: Fragment() {
         Glide.with(this).load(R.drawable.person).into(binding.imageView)
 
         binding.button3.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val calendario = Calendar.getInstance()
+            val year = calendario.get(Calendar.YEAR)
+            val month = calendario.get(Calendar.MONTH)
+            val day = calendario.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
-                val birthdate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-                binding.button3.setText(birthdate)
+                val fecha = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                binding.button3.text = fecha
             }, year, month, day)
 
             datePickerDialog.show()
