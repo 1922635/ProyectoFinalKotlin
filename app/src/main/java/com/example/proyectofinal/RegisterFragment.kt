@@ -54,8 +54,20 @@ class RegisterFragment: Fragment() {
         }
 
         binding.button4.setOnClickListener {
-            findNavController()
-                .navigate(R.id.action_secondFragment_to_firstFragment)
+
+            val user = binding.inputEmail.text.toString()
+            val password = binding.inputPassword.text.toString()
+
+            if (user.isEmpty())
+            {
+                binding.textInputLayout2.error = getString(R.string.errorEmail)
+            }else if (password.isEmpty())
+            {
+                binding.textInputLayout3.error = getString(R.string.errorPassword)
+            }else
+            {
+                findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
+            }
         }
     }
 
