@@ -55,6 +55,11 @@ class RegisterFragment: Fragment() {
             datePickerDialog.show()
         }
 
+        binding.imageButton.setOnClickListener {
+            findNavController()
+                .navigate(R.id.action_secondFragment_to_firstFragment)
+        }
+
         //AL pulsar el botón primero compruebo que los campos no estén vacíos. Despues creo al usuario en la base de datos y finalmente navego al login.
         binding.button4.setOnClickListener {
 
@@ -84,19 +89,17 @@ class RegisterFragment: Fragment() {
 
                             db.collection("usuarios").document(email).set(user)
                                 .addOnSuccessListener {
-                                    Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, "Se ha registrado un usuario correctamente", Toast.LENGTH_SHORT).show()
                                     findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
                                 }
                                 .addOnFailureListener {
-                                    Toast.makeText(context, "Error al guardar usuario", Toast.LENGTH_SHORT).show()
+                                    //Toast.makeText(context, "Error al guardar usuario", Toast.LENGTH_SHORT).show()
                                 }
                         } else {
                             Toast.makeText(context, "Error en el registro", Toast.LENGTH_SHORT).show()
                         }
                     }
-                //binding.textInputLayout3.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
-
-                findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
+                binding.inputPassword.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
         }
     }
