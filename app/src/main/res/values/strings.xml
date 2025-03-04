@@ -33,4 +33,5 @@
     <string name="errorEmail">Introduzca un email válido</string>
     <string name="errorPassword">Introduzca una contraseña válido</string>
     <string name="fecha">Fecha</string>
+    <string name="errorFecha">Introduzca una fecha valida</string>
 </resources>

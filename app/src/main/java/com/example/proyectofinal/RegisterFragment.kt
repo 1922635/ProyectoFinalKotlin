@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.proyectofinal.databinding.FragmentLoginBinding
@@ -54,25 +55,49 @@ class RegisterFragment: Fragment() {
             datePickerDialog.show()
         }
 
+        //AL pulsar el botón primero compruebo que los campos no estén vacíos. Despues creo al usuario en la base de datos y finalmente navego al login.
         binding.button4.setOnClickListener {
 
-            val user = binding.inputEmail.text.toString()
+            val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
+            val date = binding.button3.text.toString()
 
-            if (user.isEmpty())
+            if (email.isEmpty())
             {
                 binding.textInputLayout2.error = getString(R.string.errorEmail)
             }else if (password.isEmpty())
             {
                 binding.textInputLayout3.error = getString(R.string.errorPassword)
+            }else if (date.isEmpty())
+            {
+                binding.button3.error = getString(R.string.errorFecha)
             }else
             {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful)
+                        {
+                            val user = hashMapOf(
+                                "email" to email,
+                                "date" to date,
+                            )
+
+                            db.collection("usuarios").document(email).set(user)
+                                .addOnSuccessListener {
+                                    Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                    findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(context, "Error al guardar usuario", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                            Toast.makeText(context, "Error en el registro", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                //binding.textInputLayout3.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+
                 findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
             }
         }
-    }
-
-    companion object {
-
     }
 }
