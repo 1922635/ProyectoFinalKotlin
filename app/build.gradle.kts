@@ -29,11 +29,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     viewBinding {
@@ -48,6 +48,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    //Glide
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
     //Navigation
     implementation (libs.androidx.navigation.fragment.ktx)
     implementation (libs.androidx.navigation.ui.ktx)
@@ -56,12 +61,13 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
     implementation (libs.firebase.common.ktx)
-    //implementation ("com.google.firebase:firebase-auth-ktx:22.3.0") // Si piensas usar autenticación en el futuro
+
+    //implementation ("com.google.firebase:firebase-auth-ktx:22.3.0") // Auth opción1
+    implementation (libs.firebaseui.firebase.ui.auth) // Auth opción2
+
 
     implementation(libs.androidx.swiperefreshlayout)
-
     implementation (libs.play.services.auth)
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

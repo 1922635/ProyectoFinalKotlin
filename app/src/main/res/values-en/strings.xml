@@ -32,4 +32,5 @@
     <string name="favoritos">Favourites</string>
     <string name="errorEmail">Introduce a valid email</string>
     <string name="errorPassword">Introduce a valid password</string>
+    <string name="fecha">Date</string>
 </resources>
